@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="game-chat-backend:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="3f7b9262-eb9d-4d53-ad77-bc7fe583844e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/game_chat_backend_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/raisen/game-chat/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/raisen/game-chat/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/world/raisen/ClientHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/world/raisen/ServerHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/game-chat-backend/com/raisen/world/ClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/game-chat-backend/com/raisen/world/ClientHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/game-chat-backend/com/raisen/world/Protocol.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/game-chat-backend/com/raisen/world/Protocol.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/raisen/world/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/raisen/world/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/raisen/world/Protocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/raisen/world/Protocol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/raisen/world/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/raisen/world/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/game-chat-backend/com/raisen/world/Client$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/game-chat-backend/com/raisen/world/Client$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/game-chat-backend/com/raisen/world/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/game-chat-backend/com/raisen/world/ClientHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/game-chat-backend/com/raisen/world/Protocol.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/game-chat-backend/com/raisen/world/Server.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/raisen/world/Client.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/raisen/world/Protocol.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/raisen/world/Server.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +31,23 @@
   </component>
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/src/com/raisen/game-chat">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="game-chat-backend" />
@@ -35,17 +66,37 @@
     <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1WLBcAV5EAnJrAM8vvVoYWDw6NM" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="jdk.selected.JAVA_MODULE" value="11" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
-  <component name="RunManager" selected="Application.Server">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Client (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.world.raisen.Client" />
+      <module name="game-chat-backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.world.raisen.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.raisen.world.Client" />
       <module name="game-chat-backend" />
@@ -69,6 +120,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Server (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.world.raisen.Server" />
+      <module name="game-chat-backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.world.raisen.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.raisen.world.Server" />
       <module name="game-chat-backend" />
@@ -86,11 +150,15 @@
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Client" />
       <item itemvalue="Application.Server" />
+      <item itemvalue="Application.Server (1)" />
+      <item itemvalue="Application.Client (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client" />
+        <item itemvalue="Application.Client (1)" />
+        <item itemvalue="Application.Server (1)" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Client" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -120,72 +188,77 @@
     </task>
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state width="2517" height="224" key="GridCell.Tab.0.bottom" timestamp="1578929284349">
+    <state x="872" y="358" key="#Setter_Template" timestamp="1578933285674">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="224" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1578929284349" />
-    <state width="2517" height="224" key="GridCell.Tab.0.center" timestamp="1578929284349">
+    <state x="872" y="358" key="#Setter_Template/0.0.2560.1400@0.0.2560.1400" timestamp="1578933285674" />
+    <state x="1035" y="536" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1578937630821">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="224" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1578929284349" />
-    <state width="2517" height="224" key="GridCell.Tab.0.left" timestamp="1578929284349">
+    <state x="1035" y="536" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1578937630821" />
+    <state x="1085" y="383" key="#com.intellij.ide.util.MemberChooser" timestamp="1578936155155">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="224" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1578929284349" />
-    <state width="2517" height="224" key="GridCell.Tab.0.right" timestamp="1578929284349">
+    <state x="1085" y="383" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400@0.0.2560.1400" timestamp="1578936155155" />
+    <state x="1033" y="554" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1578937720314">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="224" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1578929284349" />
-    <state width="2517" height="227" key="GridCell.Tab.1.bottom" timestamp="1578929284348">
+    <state x="1033" y="554" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1578937720314" />
+    <state x="1010" y="446" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1578933540909">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="227" key="GridCell.Tab.1.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1578929284348" />
-    <state width="2517" height="227" key="GridCell.Tab.1.center" timestamp="1578929284348">
+    <state x="1010" y="446" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1578933540909" />
+    <state width="2517" height="218" key="GridCell.Tab.0.bottom" timestamp="1578937105650">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="227" key="GridCell.Tab.1.center/0.0.2560.1400@0.0.2560.1400" timestamp="1578929284348" />
-    <state width="2517" height="227" key="GridCell.Tab.1.left" timestamp="1578929284348">
+    <state width="2517" height="218" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1578937105650" />
+    <state width="2517" height="218" key="GridCell.Tab.0.center" timestamp="1578937105650">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="227" key="GridCell.Tab.1.left/0.0.2560.1400@0.0.2560.1400" timestamp="1578929284348" />
-    <state width="2517" height="227" key="GridCell.Tab.1.right" timestamp="1578929284348">
+    <state width="2517" height="218" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1578937105650" />
+    <state width="2517" height="218" key="GridCell.Tab.0.left" timestamp="1578937105650">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="227" key="GridCell.Tab.1.right/0.0.2560.1400@0.0.2560.1400" timestamp="1578929284348" />
-    <state x="783" y="345" key="SettingsEditor" timestamp="1578919169154">
+    <state width="2517" height="218" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1578937105650" />
+    <state width="2517" height="218" key="GridCell.Tab.0.right" timestamp="1578937105650">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="783" y="345" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1578919169154" />
+    <state width="2517" height="218" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1578937105650" />
+    <state width="2517" height="227" key="GridCell.Tab.1.bottom" timestamp="1578937024251">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="227" key="GridCell.Tab.1.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1578937024251" />
+    <state width="2517" height="227" key="GridCell.Tab.1.center" timestamp="1578937024250">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="227" key="GridCell.Tab.1.center/0.0.2560.1400@0.0.2560.1400" timestamp="1578937024250" />
+    <state width="2517" height="227" key="GridCell.Tab.1.left" timestamp="1578937024250">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="227" key="GridCell.Tab.1.left/0.0.2560.1400@0.0.2560.1400" timestamp="1578937024250" />
+    <state width="2517" height="227" key="GridCell.Tab.1.right" timestamp="1578937024251">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="227" key="GridCell.Tab.1.right/0.0.2560.1400@0.0.2560.1400" timestamp="1578937024251" />
+    <state x="783" y="345" key="SettingsEditor" timestamp="1578938190180">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="783" y="345" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1578938190180" />
     <state x="988" y="527" key="com.intellij.ide.util.TipDialog" timestamp="1578919085460">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="988" y="527" key="com.intellij.ide.util.TipDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1578919085459" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/raisen/world/Server.java</url>
-          <line>146</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/raisen/world/Server.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/raisen/world/Client.java</url>
-          <line>58</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/raisen/world/Client.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="856" y="435" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1578936985251">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="856" y="435" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.2560.1400@0.0.2560.1400" timestamp="1578936985251" />
+    <state x="1101" y="274" key="new project wizard" timestamp="1578938157922">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1101" y="274" key="new project wizard/0.0.2560.1400@0.0.2560.1400" timestamp="1578938157922" />
   </component>
 </project>

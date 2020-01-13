@@ -1,4 +1,4 @@
-package com.raisen.world;
+package com.world.raisen;
 
 import java.io.*;
 import java.net.*;
