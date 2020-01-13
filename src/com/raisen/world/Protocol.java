@@ -1,6 +1,7 @@
 package com.raisen.world;
 
 import java.io.DataInputStream;
+import java.io.IOException;
 
 public class Protocol {
 
@@ -9,7 +10,7 @@ public class Protocol {
     private static final int DELETE_USER = 0x5002;
 
 
-    void handleIncomingData(DataInputStream ds)
+    void handleIncomingData(DataInputStream ds) throws IOException
     {
 
         try
@@ -26,14 +27,17 @@ public class Protocol {
                     System.out.println("PUTA");
                     break;
 
+                case DELETE_USER:
+                    break;
+
                 default:
-                    System.out.println("Invalid packet received !");
+                    System.out.print("Invalid packet received !");
                     break;
 
             }
-        }catch (Exception e)
+        }catch (IOException e)
         {
-            System.out.println(e.getMessage());
+            throw e;
         }
     }
 }

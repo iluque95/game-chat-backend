@@ -72,6 +72,8 @@ class ClientHandler implements Runnable
     boolean isloggedin;
     Protocol p;
 
+    private volatile boolean running = true;
+
     // constructor
     public ClientHandler(Socket s, String name,
                          DataInputStream dis, DataOutputStream dos, Protocol p) {
@@ -87,7 +89,7 @@ class ClientHandler implements Runnable
     public void run() {
 
         String received;
-        while (true)
+        while (running)
         {
             try
             {
@@ -129,8 +131,8 @@ class ClientHandler implements Runnable
                 }
                  */
             } catch (IOException e) {
-
-                e.printStackTrace();
+                System.out.println(e.getMessage());
+                running = false;
             }
 
         }
@@ -139,6 +141,7 @@ class ClientHandler implements Runnable
             // closing resources
             this.dis.close();
             this.dos.close();
+            this.s.close();
 
         }catch(IOException e){
             e.printStackTrace();
