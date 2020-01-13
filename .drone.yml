@@ -1,0 +1,50 @@
+---
+kind: pipeline
+type: docker
+name: linux-amd64
+
+platform:
+  arch: amd64
+  os: linux
+
+steps:
+- name: restore-cache
+  image: drillster/drone-volume-cache
+  volumes:
+  - name: cache
+    path: /cache
+  settings:
+    restore: true
+    mount:
+      - ./out
+
+- name: build
+  image: gradle:jdk11
+  commands:
+  - gradle build
+
+- name: rebuild-cache
+  image: drillster/drone-volume-cache
+  volumes:
+  - name: cache
+    path: /cache
+  settings:
+    rebuild: true
+    mount:
+      - ./out
+
+- name: discord notification
+  image: autograder/drone-discord
+  settings:
+    webhook_id: 
+      from_secret: discord_webhook_id
+    webhook_token:
+      from_secret: discord_webhook_token
+    username: Github
+    avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+    message: "**{{{commit.author}}}**/**Chat Server** [{{regexReplace 'success' build.status 'All tests passing'}}] ```{{{commit.message}}}```"
+
+volumes:
+  - name: cache
+    host: 
+      path: /tmp/cache
