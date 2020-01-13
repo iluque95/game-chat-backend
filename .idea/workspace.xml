@@ -7,22 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f7b9262-eb9d-4d53-ad77-bc7fe583844e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/game_chat_backend_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/raisen/game-chat/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/raisen/game-chat/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/world/raisen/ClientHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/world/raisen/ServerHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/game-chat-backend/com/raisen/world/Client$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/game-chat-backend/com/raisen/world/Client$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/game-chat-backend/com/raisen/world/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/game-chat-backend/com/raisen/world/ClientHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/game-chat-backend/com/raisen/world/Protocol.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/game-chat-backend/com/raisen/world/Server.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/raisen/world/Client.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/raisen/world/Protocol.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/raisen/world/Server.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/world/raisen/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/world/raisen/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/world/raisen/Protocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/world/raisen/Protocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/world/raisen/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/world/raisen/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/world/raisen/ServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/world/raisen/ServerHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

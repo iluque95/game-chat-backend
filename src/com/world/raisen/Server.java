@@ -18,8 +18,6 @@ public class Server
 
         Socket s;
 
-        Protocol p = new Protocol();
-
         System.out.println("Started server on port 1234. Listening new connections.");
 
         // running infinite loop for getting
@@ -42,7 +40,7 @@ public class Server
             System.out.println("Creating a new handler for this client...");
 
             // Create a new handler object for handling this request.
-            ClientHandler mtch = new ClientHandler(s, dis, dos, p);
+            ClientHandler mtch = new ClientHandler(s, dis, dos);
 
             // Create a new Thread with this object.
             Thread t = new Thread(mtch);
