@@ -8,17 +8,23 @@ import java.net.*;
 public class Server
 {
 
-    static public HashMap<Integer, ClientHandler> map = new HashMap<>();
-    static public Vector<List<Integer>> world_grid = new Vector<List<Integer>>();
+    // Game server and client pool threads.
+    static private Thread gs;
+    static private ClientPool cp;
 
     public static void main(String[] args) throws IOException
     {
+
         // server is listening on port 1234
         ServerSocket ss = new ServerSocket(1234);
+
+        ss.setReuseAddress(true);
 
         Socket s;
 
         System.out.println("Started server on port 1234. Listening new connections.");
+
+        cp = new ClientPool();
 
         // running infinite loop for getting
         // client request
@@ -31,7 +37,7 @@ public class Server
             s.setKeepAlive(true);
             s.setTcpNoDelay(true);
 
-            System.out.println("New client request received : " + s.getRemoteSocketAddress().toString());
+            System.out.println("New client request received : " + s.getInetAddress().getHostAddress().toString());
 
             // obtain input and output streams
             DataInputStream dis = new DataInputStream(s.getInputStream());
@@ -39,14 +45,28 @@ public class Server
 
             System.out.println("Creating a new handler for this client...");
 
-            // Create a new handler object for handling this request.
-            ClientHandler mtch = new ClientHandler(s, dis, dos);
 
-            // Create a new Thread with this object.
-            Thread t = new Thread(mtch);
+            if (s.getRemoteSocketAddress().toString() == "XX.XX.XX.XX")
+            {
+                ServerHandler sh = new ServerHandler(s, dis, dos);
 
-            // start the thread.
-            t.start();
+                // Create a new Thread with this object.
+                gs = new Thread(sh);
+
+                // start the thread.
+                gs.start();
+            }
+            else
+            {
+                // TODO: Add client to pool
+
+                if (cp != null)
+                {
+                    cp.addClient(s);
+                }
+
+            }
+
         }
     }
 }
