@@ -27,11 +27,27 @@ class ClientPool {
         t.start();
     }
 
+    void handleTokenConfirmation(int uuid, boolean valid)
+    {
+        ClientHandler c = map.get(uuid);
+
+        if (valid)
+        {
+            c.pending_validation = false;
+        }
+        else
+        {
+
+        }
+
+
+    }
+
 
     private class Protocol {
 
 
-        private static final int TOKEN = 0x5200;
+        private static final int PARAMS = 0x5200;
 
         // Client I/O.
         private static final int TOINDEX = 0x5500;
@@ -96,6 +112,18 @@ class ClientPool {
 
                         break;
 
+                    case PARAMS:
+
+                        from = c.dis.readInt();
+                        c.token = c.dis.readInt();
+
+                        Server.sh.write(0x5600);
+                        Server.sh.write(from);
+                        Server.sh.write(c.token);
+
+                        Server.sh.send();
+
+
                     default:
                         System.out.println("Invalid packet received from user " + c.getName());
                         break;
@@ -106,6 +134,7 @@ class ClientPool {
                 throw e;
             }
         }
+
     }
 
     private class WorldPos {
@@ -157,6 +186,9 @@ class ClientPool {
         Protocol p;
         WorldPos wp;
 
+        boolean pending_validation;
+        int token;
+
         // constructor
         ClientHandler(Socket s) {
 
@@ -167,6 +199,8 @@ class ClientPool {
                 this.s = s;
                 this.p = new Protocol();
                 this.uuid = 0;
+                this.pending_validation = true;
+                this.token = 0;
 
             }catch (IOException e)
             {
@@ -238,6 +272,24 @@ class ClientPool {
             }
         }
 
+        public void disconnectUser()
+        {
+            running = false;
+            removeUserFromPool();
+
+            try
+            {
+                // closing resources
+                this.dis.close();
+                this.dos.close();
+                this.s.close();
+
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+
+        }
+
 
         @Override
         public void run() {
@@ -250,27 +302,14 @@ class ClientPool {
                     p.handleIncomingData(this);
                 }
 
-                removeUserFromPool();
-
                 System.out.println("Disconnected user.");
-
-            } catch (IOException e) {
-                running = false;
+            }
+            catch (IOException e)
+            {
                 System.out.println("Error. Killing thread.");
             }
 
-            // Thread killed
-
-            try
-            {
-                // closing resources
-                this.dis.close();
-                this.dos.close();
-                this.s.close();
-
-            }catch(IOException e){
-                e.printStackTrace();
-            }
+            disconnectUser();
         }
     }
 }

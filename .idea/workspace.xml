@@ -8,7 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3f7b9262-eb9d-4d53-ad77-bc7fe583844e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/world/raisen/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/world/raisen/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/world/raisen/ClientPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/world/raisen/ClientPool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/world/raisen/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/world/raisen/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/world/raisen/ServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/world/raisen/ServerHandler.java" afterDir="false" />
@@ -72,7 +71,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
-  <component name="RunManager" selected="Application.Client (1)">
+  <component name="RunManager" selected="Application.Server (1)">
     <configuration name="Client (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.world.raisen.Client" />
       <module name="game-chat-backend" />
@@ -201,22 +200,22 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1010" y="446" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1578933540909" />
-    <state width="2517" height="350" key="GridCell.Tab.0.bottom" timestamp="1579018266134">
+    <state width="2517" height="217" key="GridCell.Tab.0.bottom" timestamp="1579018689428">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="350" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1579018266134" />
-    <state width="2517" height="350" key="GridCell.Tab.0.center" timestamp="1579018266134">
+    <state width="2517" height="217" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1579018689428" />
+    <state width="2517" height="217" key="GridCell.Tab.0.center" timestamp="1579018689428">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="350" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1579018266134" />
-    <state width="2517" height="350" key="GridCell.Tab.0.left" timestamp="1579018266134">
+    <state width="2517" height="217" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1579018689428" />
+    <state width="2517" height="217" key="GridCell.Tab.0.left" timestamp="1579018689428">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="350" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1579018266134" />
-    <state width="2517" height="350" key="GridCell.Tab.0.right" timestamp="1579018266134">
+    <state width="2517" height="217" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1579018689428" />
+    <state width="2517" height="217" key="GridCell.Tab.0.right" timestamp="1579018689428">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="350" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1579018266134" />
+    <state width="2517" height="217" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1579018689428" />
     <state width="2517" height="350" key="GridCell.Tab.1.bottom" timestamp="1579018266134">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -249,6 +248,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1101" y="274" key="new project wizard/0.0.2560.1400@0.0.2560.1400" timestamp="1578938157922" />
+    <state x="943" y="315" key="search.everywhere.popup" timestamp="1579018948414">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="943" y="315" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1579018948414" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
