@@ -11,7 +11,6 @@ public class ServerHandler implements Runnable {
         private static final int NEW_USER = 0x5000;
         private static final int UPDATE_USER = 0x5001;
         private static final int DELETE_USER = 0x5002;
-        private static final int QUIT_USER = 0x5003;
 
         private static final int CONFIG_PARAMS = 0x5100;
 
@@ -36,6 +35,10 @@ public class ServerHandler implements Runnable {
 
                     case DELETE_USER:
 
+                        int to = c.dis.readInt();
+
+                        Server.cp.removeClient(to);
+
                         break;
 
 
@@ -47,9 +50,9 @@ public class ServerHandler implements Runnable {
 
                     case VALIDATE_TOKEN:
 
-                        int to = c.dis.readInt();
+                        to = c.dis.readInt();
                         boolean valid = c.dis.readBoolean();
-                        
+
                         Server.cp.handleTokenConfirmation(to, valid);
 
                         break;

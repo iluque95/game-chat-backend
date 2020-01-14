@@ -9,7 +9,6 @@
     <list default="true" id="3f7b9262-eb9d-4d53-ad77-bc7fe583844e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/world/raisen/ClientPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/world/raisen/ClientPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/world/raisen/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/world/raisen/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/world/raisen/ServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/world/raisen/ServerHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

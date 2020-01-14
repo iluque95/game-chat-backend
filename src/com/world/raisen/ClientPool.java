@@ -27,6 +27,21 @@ class ClientPool {
         t.start();
     }
 
+    void removeClient(int uuid)
+    {
+
+        // Delete from the data structs.
+        if (uuid != 0)
+        {
+            ClientHandler c = map.remove(uuid);
+
+            world_grid.elementAt(c.wp.map).remove(uuid);
+
+            c.disconnectUser();
+        }
+
+    }
+
     void handleTokenConfirmation(int uuid, boolean valid)
     {
         ClientHandler c = map.get(uuid);
@@ -261,21 +276,9 @@ class ClientPool {
 
         }
 
-        public void removeUserFromPool()
-        {
-            // Delete from the data structs.
-            if (uuid != 0)
-            {
-                map.remove(uuid);
-
-                world_grid.elementAt(wp.map).remove(uuid);
-            }
-        }
-
         public void disconnectUser()
         {
             running = false;
-            removeUserFromPool();
 
             try
             {
@@ -309,7 +312,7 @@ class ClientPool {
                 System.out.println("Error. Killing thread.");
             }
 
-            disconnectUser();
+            removeClient(getId());
         }
     }
 }
