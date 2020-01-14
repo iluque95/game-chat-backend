@@ -19,7 +19,12 @@ class ClientPool {
 
     void addClient(Socket s)
     {
-        Thread t = new Thread(new ClientHandler(s));
+
+        ClientHandler c = new ClientHandler(s);
+
+        Thread t = new Thread(c);
+
+        t.start();
     }
 
 
@@ -38,6 +43,9 @@ class ClientPool {
         void handleIncomingData(ClientHandler c) throws IOException {
             try {
                 int op = c.dis.readInt();
+
+                System.out.println("Opcode packet: " + Integer.toHexString(op));
+                System.out.println("Message: " + c.dis.readUTF());
 
                 switch (op) {
 
@@ -94,6 +102,7 @@ class ClientPool {
 
                 }
             } catch (IOException e) {
+                e.printStackTrace();
                 throw e;
             }
         }
@@ -150,6 +159,7 @@ class ClientPool {
 
         // constructor
         ClientHandler(Socket s) {
+
             try
             {
                 this.dis = new DataInputStream(s.getInputStream());
@@ -217,6 +227,17 @@ class ClientPool {
 
         }
 
+        public void removeUserFromPool()
+        {
+            // Delete from the data structs.
+            if (uuid != 0)
+            {
+                map.remove(uuid);
+
+                world_grid.elementAt(wp.map).remove(uuid);
+            }
+        }
+
 
         @Override
         public void run() {
@@ -224,24 +245,18 @@ class ClientPool {
 
             try
             {
-                while ((line = dis.read()) != -1 && running)
+                while (running)
                 {
-
                     p.handleIncomingData(this);
                 }
 
-                // Delete from the data structs.
-                if (uuid != 0)
-                {
-                    map.remove(uuid);
-
-                    world_grid.elementAt(wp.map).remove(uuid);
-                }
+                removeUserFromPool();
 
                 System.out.println("Disconnected user.");
 
             } catch (IOException e) {
                 running = false;
+                System.out.println("Error. Killing thread.");
             }
 
             // Thread killed

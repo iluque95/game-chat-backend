@@ -13,6 +13,7 @@ public class ServerHandler implements Runnable {
         private static final int NEW_USER = 0x5000;
         private static final int UPDATE_USER = 0x5001;
         private static final int DELETE_USER = 0x5002;
+        private static final int QUIT_USER = 0x5003;
 
         private static final int CONFIG_PARAMS = 0x5100;
 
@@ -60,8 +61,8 @@ public class ServerHandler implements Runnable {
         }
     }
 
-    final DataInputStream dis;
-    final DataOutputStream dos;
+    private DataInputStream dis;
+    private DataOutputStream dos;
     Socket s;
     Protocol p;
     int maps;
@@ -74,12 +75,19 @@ public class ServerHandler implements Runnable {
     private volatile boolean running = true;
 
     // constructor
-    public ServerHandler(Socket s,
-                         DataInputStream dis, DataOutputStream dos) {
-        this.dis = dis;
-        this.dos = dos;
-        this.s = s;
-        this.p = new Protocol();
+    public ServerHandler(Socket s) {
+        try
+        {
+            this.dis = new DataInputStream(s.getInputStream());
+            this.dos = new DataOutputStream(s.getOutputStream());
+            this.s = s;
+            this.p = new Protocol();
+
+        }catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
     }
 
     public void setMaps(int maps) {
