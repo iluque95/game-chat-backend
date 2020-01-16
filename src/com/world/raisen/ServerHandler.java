@@ -31,6 +31,11 @@ public class ServerHandler implements Runnable {
 
                     case UPDATE_USER:
 
+                        int uuid = c.dis.readInt(), map = c.dis.readInt();
+                        byte x = c.dis.readByte(), y = c.dis.readByte();
+
+                        Server.cp.updatePosition(uuid, map, x, y);
+
                         break;
 
                     case DELETE_USER:

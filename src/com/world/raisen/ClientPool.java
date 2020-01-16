@@ -42,20 +42,29 @@ class ClientPool {
 
     }
 
+    void updatePosition(int uuid, int map, byte x, byte y)
+    {
+        ClientHandler c = this.map.get(map);
+
+        c.wp.setMap(map);
+        c.wp.setX(x);
+        c.wp.setY(y);
+
+        // TODO: Update in world_grid vector if user switch to other map.
+    }
+
     void handleTokenConfirmation(int uuid, boolean valid)
     {
         ClientHandler c = map.get(uuid);
 
-        if (valid)
+        if (valid && c != null)
         {
             c.pending_validation = false;
         }
         else
         {
-
+            removeClient(uuid);
         }
-
-
     }
 
 
@@ -166,10 +175,10 @@ class ClientPool {
 
     private class WorldPos {
         private int map;
-        private int x;
-        private int y;
+        private byte x;
+        private byte y;
 
-        WorldPos(int map, int x, int y) {
+        WorldPos(int map, byte x, byte y) {
             this.map = map;
             this.x = x;
             this.y = y;
@@ -179,11 +188,11 @@ class ClientPool {
             this.map = map;
         }
 
-        void setX(int x) {
+        void setX(byte x) {
             this.x = x;
         }
 
-        void setY(int y) {
+        void setY(byte y) {
             this.y = y;
         }
 
@@ -191,11 +200,11 @@ class ClientPool {
             return map;
         }
 
-        int getX() {
+        byte getX() {
             return x;
         }
 
-        int getY() {
+        byte getY() {
             return y;
         }
 

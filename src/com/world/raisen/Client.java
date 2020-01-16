@@ -36,6 +36,9 @@ public class Client
                         // write on the output stream
                         dos.writeInt(0x7000);
                         dos.writeUTF(msg);
+
+                        dos.flush();
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
