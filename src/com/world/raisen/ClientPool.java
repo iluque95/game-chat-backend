@@ -70,6 +70,8 @@ class ClientPool {
         private static final int TOMAP = 0x5502;
         private static final int BROADCAST = 0x5555;
 
+        private static final int VALIDATE_TOKEN = 0x5600;
+
 
         void handleIncomingData(ClientHandler c) throws IOException {
             try {
@@ -86,10 +88,10 @@ class ClientPool {
                         int to = c.dis.readInt();
                         String message = c.dis.readUTF();
 
-
                         ClientHandler ch = map.get(to);
 
-                        if (ch != null) {
+
+                        if (c != null && !c.pending_validation && ch != null) {
                             ch.write(from);
                             ch.writeUTF(message);
                             ch.send();
@@ -104,13 +106,23 @@ class ClientPool {
                         int pos_map = c.dis.readInt();
                         message = c.dis.readUTF();
 
-                        for (Integer i : world_grid.get(pos_map)) {
-                            ch = map.get(i);
+                        if (c != null && !c.pending_validation)
+                        {
 
-                            ch.write(from);
-                            ch.writeUTF(message);
-                            ch.send();
+                            for (Integer i : world_grid.get(pos_map)) {
+
+                                ClientHandler tmp = map.get(i);
+
+                                if (tmp != c)
+                                {
+                                    tmp.write(from);
+                                    tmp.writeUTF(message);
+                                    tmp.send();
+                                }
+                            }
                         }
+
+                        break;
 
                     case BROADCAST:
 
@@ -132,7 +144,7 @@ class ClientPool {
                         from = c.dis.readInt();
                         c.token = c.dis.readInt();
 
-                        Server.sh.write(0x5600);
+                        Server.sh.write(VALIDATE_TOKEN);
                         Server.sh.write(from);
                         Server.sh.write(c.token);
 
@@ -145,7 +157,7 @@ class ClientPool {
 
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
                 throw e;
             }
         }

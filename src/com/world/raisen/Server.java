@@ -42,7 +42,7 @@ public class Server
             System.out.println("New client request received : " + s.getInetAddress().getHostAddress().toString());
 
 
-            if (s.getRemoteSocketAddress().toString() == "XX.XX.XX.XX")
+            if (s.getInetAddress().getHostAddress().toString() == "XX.XX.XX.XX")
             {
                 sh = new ServerHandler(s);
 

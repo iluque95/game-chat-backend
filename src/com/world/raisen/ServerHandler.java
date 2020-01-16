@@ -14,7 +14,7 @@ public class ServerHandler implements Runnable {
 
         private static final int CONFIG_PARAMS = 0x5100;
 
-        private static final int VALIDATE_TOKEN = 0x5600;
+        private static final int TOKEN_CONFIRM = 0x5601;
 
 
         void handleIncomingData(ServerHandler c) throws IOException
@@ -47,8 +47,7 @@ public class ServerHandler implements Runnable {
 
                         break;
 
-
-                    case VALIDATE_TOKEN:
+                    case TOKEN_CONFIRM:
 
                         to = c.dis.readInt();
                         boolean valid = c.dis.readBoolean();
@@ -131,7 +130,6 @@ public class ServerHandler implements Runnable {
     @Override
     public void run() {
 
-        String received;
         while (running)
         {
             try
@@ -141,12 +139,11 @@ public class ServerHandler implements Runnable {
 
             } catch (IOException e) {
                 running = false;
-                System.out.println("Disconnected user.");
+                System.out.println("Game server RWAO closes connection.");
             }
 
         }
 
-        // Thread killed
 
         try
         {
