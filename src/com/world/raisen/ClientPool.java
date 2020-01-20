@@ -3,12 +3,14 @@ package com.world.raisen;
 
 import java.io.*;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
 // ClientHandler class
-class ClientPool {
+class ClientPool
+{
 
 
     // HashMap --> <UUID, Client>
@@ -68,7 +70,8 @@ class ClientPool {
     }
 
 
-    private class Protocol {
+    private class Protocol
+    {
 
 
         private static final int PARAMS = 0x5200;
@@ -84,10 +87,15 @@ class ClientPool {
 
         void handleIncomingData(ClientHandler c) throws IOException {
             try {
-                int op = c.dis.readInt();
+
+                byte[] b = new byte[2048];
+
+                c.dis.read(b, 0, 2048);
+
+                int op = 50;//c.dis.readInt();
 
                 System.out.println("Opcode packet: " + Integer.toHexString(op));
-                System.out.println("Message: " + c.dis.readUTF());
+                //System.out.println("Message: " + c.dis.readUTF());
 
                 switch (op) {
 
@@ -153,11 +161,11 @@ class ClientPool {
                         from = c.dis.readInt();
                         c.token = c.dis.readInt();
 
-                        Server.sh.write(VALIDATE_TOKEN);
-                        Server.sh.write(from);
-                        Server.sh.write(c.token);
+                        Main.server.writeToGameServer(VALIDATE_TOKEN);
+                        Main.server.writeToGameServer(from);
+                        Main.server.writeToGameServer(c.token);
 
-                        Server.sh.send();
+                        Main.server.sendToGameServer();
 
 
                     default:
@@ -173,12 +181,14 @@ class ClientPool {
 
     }
 
-    private class WorldPos {
+    private class WorldPos
+    {
         private int map;
         private byte x;
         private byte y;
 
-        WorldPos(int map, byte x, byte y) {
+        WorldPos(int map, byte x, byte y)
+        {
             this.map = map;
             this.x = x;
             this.y = y;
@@ -226,7 +236,8 @@ class ClientPool {
         int token;
 
         // constructor
-        ClientHandler(Socket s) {
+        ClientHandler(Socket s)
+        {
 
             try
             {
@@ -260,7 +271,8 @@ class ClientPool {
             this.uuid = id;
         }
 
-        public <E> void write(E val) {
+        public <E> void write(E val)
+        {
             try {
                 ByteArrayOutputStream bytesOut = new ByteArrayOutputStream();
                 ObjectOutputStream oos = new ObjectOutputStream(bytesOut);
@@ -278,7 +290,8 @@ class ClientPool {
         }
 
 
-        public void writeUTF(String str) {
+        public void writeUTF(String str)
+        {
             try {
                 dos.writeUTF(str);
             } catch (IOException e) {
@@ -287,7 +300,8 @@ class ClientPool {
 
         }
 
-        public void send() {
+        public void send()
+        {
             try {
                 this.dos.flush();
 
@@ -316,15 +330,16 @@ class ClientPool {
 
 
         @Override
-        public void run() {
+        public void run()
+        {
             int line;
 
             try
             {
                 while (running)
-                {
-                    p.handleIncomingData(this);
-                }
+            {
+                p.handleIncomingData(this);
+            }
 
                 System.out.println("Disconnected user.");
             }

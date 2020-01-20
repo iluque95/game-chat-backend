@@ -33,14 +33,18 @@ public class Client
                     String msg = scn.nextLine();
 
                     try {
+
                         // write on the output stream
                         dos.writeInt(0x7000);
-                        dos.writeUTF(msg);
+                        //dos.writeUTF(msg);
+
+                        System.out.println(dos.toString());
 
                         dos.flush();
 
                     } catch (IOException e) {
                         e.printStackTrace();
+                        break;
                     }
                 }
             }
@@ -60,6 +64,8 @@ public class Client
                     } catch (IOException e) {
 
                         e.printStackTrace();
+                        break;
+
                     }
                 }
             }

@@ -8,60 +8,70 @@ import java.net.*;
 public class Server
 {
 
+
+    private static Server instance;
+
     // Game server and client pool threads.
-    static private Thread gs;
-    static public ServerHandler sh;
-    static public ClientPool cp;
+    private Thread gs;
+    private ServerHandler sh;
+    private ClientPool cp;
 
-    public static void main(String[] args) throws IOException
+
+    Server()
     {
-
-        // server is listening on port 1234
-        ServerSocket ss = new ServerSocket(1234);
-
-        ss.setReuseAddress(true);
-
-        Socket s;
-
-        System.out.println("Started server on port 1234. Listening new connections.");
-
         cp = new ClientPool();
         sh = null;
+    }
 
-        // running infinite loop for getting
-        // client request
-        while (true)
-        {
+    public static Server getInstance()
+    {
+        if (instance == null)
+            instance = new Server();
 
-            // Accept the incoming request
-            s = ss.accept();
+        return instance;
+    }
 
-            s.setKeepAlive(true);
-            s.setTcpNoDelay(true);
+    public void newGameServerConnection(Socket s)
+    {
+        sh = new ServerHandler(s);
 
-            System.out.println("New client request received : " + s.getInetAddress().getHostAddress().toString());
+        // Create a new Thread with this object.
+        gs = new Thread(sh);
 
+        // start the thread.
+        gs.start();
+    }
 
-            if (s.getInetAddress().getHostAddress().toString() == "XX.XX.XX.XX")
-            {
-                sh = new ServerHandler(s);
-
-                // Create a new Thread with this object.
-                gs = new Thread(sh);
-
-                // start the thread.
-                gs.start();
-            }
-            else
-            {
-                if (cp != null)
-                {
-                    cp.addClient(s);
-                }
-            }
-
-            System.out.println("User handled by a new thread.");
-
+    public void newClientConnection(Socket s)
+    {
+        if (cp != null) {
+            cp.addClient(s);
         }
     }
+
+    void updatePosition(int uuid, int map, byte x, byte y)
+    {
+        cp.updatePosition(uuid, map, x, y);
+    }
+
+    void removeClient(int uuid)
+    {
+        cp.removeClient(uuid);
+    }
+
+    void handleTokenConfirmation(int uuid, boolean valid)
+    {
+        cp.handleTokenConfirmation(uuid, valid);
+    }
+
+    public <E> void writeToGameServer(E val)
+    {
+        sh.write(val);
+    }
+
+    public void sendToGameServer()
+    {
+        sh.send();
+    }
+
 }

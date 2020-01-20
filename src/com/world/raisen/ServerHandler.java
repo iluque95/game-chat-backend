@@ -34,7 +34,7 @@ public class ServerHandler implements Runnable {
                         int uuid = c.dis.readInt(), map = c.dis.readInt();
                         byte x = c.dis.readByte(), y = c.dis.readByte();
 
-                        Server.cp.updatePosition(uuid, map, x, y);
+                        Main.server.updatePosition(uuid, map, x, y);
 
                         break;
 
@@ -42,7 +42,7 @@ public class ServerHandler implements Runnable {
 
                         int to = c.dis.readInt();
 
-                        Server.cp.removeClient(to);
+                        Main.server.removeClient(to);
 
                         break;
 
@@ -57,7 +57,7 @@ public class ServerHandler implements Runnable {
                         to = c.dis.readInt();
                         boolean valid = c.dis.readBoolean();
 
-                        Server.cp.handleTokenConfirmation(to, valid);
+                        Main.server.handleTokenConfirmation(to, valid);
 
                         break;
 
@@ -81,7 +81,8 @@ public class ServerHandler implements Runnable {
     private volatile boolean running = true;
 
     // constructor
-    public ServerHandler(Socket s) {
+    public ServerHandler(Socket s)
+    {
         try
         {
             this.dis = new DataInputStream(s.getInputStream());
@@ -96,7 +97,8 @@ public class ServerHandler implements Runnable {
 
     }
 
-    public <E> void write(E val) {
+    public <E> void write(E val)
+    {
         try {
             ByteArrayOutputStream bytesOut = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(bytesOut);
@@ -113,7 +115,8 @@ public class ServerHandler implements Runnable {
 
     }
 
-    public void writeUTF(String str) {
+    public void writeUTF(String str)
+    {
         try {
             dos.writeUTF(str);
         } catch (IOException e) {
@@ -122,7 +125,8 @@ public class ServerHandler implements Runnable {
 
     }
 
-    public void send() {
+    public void send()
+    {
         try {
             this.dos.flush();
 
@@ -133,7 +137,8 @@ public class ServerHandler implements Runnable {
     }
 
     @Override
-    public void run() {
+    public void run()
+    {
 
         while (running)
         {
