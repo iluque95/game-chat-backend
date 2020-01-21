@@ -4,6 +4,7 @@ package com.world.raisen;
 import java.io.*;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
@@ -42,6 +43,11 @@ class ClientPool
             c.disconnectUser();
         }
 
+    }
+
+    void removeClient(ClientHandler c)
+    {
+        c.disconnectUser();
     }
 
     void updatePosition(int uuid, int map, byte x, byte y)
@@ -84,33 +90,40 @@ class ClientPool
 
         private static final int VALIDATE_TOKEN = 0x5600;
 
-
         void handleIncomingData(ClientHandler c) throws IOException {
             try {
 
-                byte[] b = new byte[2048];
+                byte[] buffer = new byte[1024];
 
-                c.dis.read(b, 0, 2048);
+                int len = c.dis.read(buffer, 0, buffer.length);
 
-                int op = 50;//c.dis.readInt();
+                if (len < 0)
+                {
+                    removeClient(c);
+                    return;
+                }
+
+
+                Packet packet = new Packet(buffer, len);
+
+                //System.out.println("Input stream: " + Arrays.toString(buffer) + ", size: " + len + ", Available bytes: " + c.dis.available());
+
+                short op = packet.readShort();
 
                 System.out.println("Opcode packet: " + Integer.toHexString(op));
-                //System.out.println("Message: " + c.dis.readUTF());
 
                 switch (op) {
 
                     case TOINDEX:
 
-                        int from = c.dis.readInt();
-                        int to = c.dis.readInt();
-                        String message = c.dis.readUTF();
+                        int from = packet.readInt();
+                        int to = packet.readInt();
 
                         ClientHandler ch = map.get(to);
 
 
                         if (c != null && !c.pending_validation && ch != null) {
-                            ch.write(from);
-                            ch.writeUTF(message);
+                            ch.write(packet.read());
                             ch.send();
                         }
 
@@ -119,9 +132,7 @@ class ClientPool
 
                     case TOMAP:
 
-                        from = c.dis.readInt();
-                        int pos_map = c.dis.readInt();
-                        message = c.dis.readUTF();
+                        int pos_map = packet.readInt();
 
                         if (c != null && !c.pending_validation)
                         {
@@ -132,8 +143,7 @@ class ClientPool
 
                                 if (tmp != c)
                                 {
-                                    tmp.write(from);
-                                    tmp.writeUTF(message);
+                                    tmp.write(packet.read());
                                     tmp.send();
                                 }
                             }
@@ -143,13 +153,9 @@ class ClientPool
 
                     case BROADCAST:
 
-                        from = c.dis.readInt();
-                        message = c.dis.readUTF();
-
                         for (ClientHandler cl : map.values()) {
                             if (cl != c) {
-                                cl.write(from);
-                                cl.writeUTF(message);
+                                cl.write(packet.read());
                                 cl.send();
                             }
                         }
@@ -158,12 +164,7 @@ class ClientPool
 
                     case PARAMS:
 
-                        from = c.dis.readInt();
-                        c.token = c.dis.readInt();
-
-                        Main.server.writeToGameServer(VALIDATE_TOKEN);
-                        Main.server.writeToGameServer(from);
-                        Main.server.writeToGameServer(c.token);
+                        Main.server.writeToGameServer(packet.read());
 
                         Main.server.sendToGameServer();
 
@@ -337,9 +338,9 @@ class ClientPool
             try
             {
                 while (running)
-            {
-                p.handleIncomingData(this);
-            }
+                {
+                    p.handleIncomingData(this);
+                }
 
                 System.out.println("Disconnected user.");
             }
