@@ -2,6 +2,7 @@ package com.world.raisen;
 
 import java.io.*;
 import java.net.*;
+import java.nio.ByteBuffer;
 import java.util.Scanner;
 
 public class Client
@@ -34,8 +35,13 @@ public class Client
 
                     try {
 
+                        ByteBuffer buffer = ByteBuffer.allocate(2);
+
+                        buffer.putShort((short)0x7510);
+
+
                         // write on the output stream
-                        dos.writeInt(0x7000);
+                        dos.write(buffer.array());
                         //dos.writeUTF(msg);
 
                         System.out.println(dos.toString());

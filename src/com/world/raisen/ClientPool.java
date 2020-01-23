@@ -3,6 +3,8 @@ package com.world.raisen;
 
 import java.io.*;
 import java.net.Socket;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -103,10 +105,7 @@ class ClientPool
                     return;
                 }
 
-
                 Packet packet = new Packet(buffer, len);
-
-                //System.out.println("Input stream: " + Arrays.toString(buffer) + ", size: " + len + ", Available bytes: " + c.dis.available());
 
                 short op = packet.readShort();
 
